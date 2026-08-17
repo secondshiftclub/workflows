@@ -1,0 +1,85 @@
+{
+  "_comment": "Copy to config.json. Every script reads this file. The intent_buckets are the highest-leverage thing in here — read a few hundred raw queries before you define them.",
+
+  "company": "Acme",
+  "category": "messaging API",
+  "site_url": "https://acme.example",
+  "topic": "SMS API",
+
+  "_topic_terms": "A page is in the cluster if one of these is in the title or slug, or appears at real density in the body. The topic has to be the page's PRIMARY subject, not a passing mention.",
+  "topic_terms": ["sms", "text message", "messaging api", "otp", "two-factor"],
+
+  "_corpus_dir": "A markdown crawl of your site. Crawl it once; ours is ~6,600 pages and rebuilds weekly. Screaming Frog gets you there if you don't have a friendly web dev. Path is relative to this folder, or absolute.",
+  "corpus_dir": "../corpus",
+
+  "inventory": {
+    "min_body_hits": 4,
+    "min_density": 0.0015
+  },
+
+  "_page_types": "regex -> label, matched against the URL. Adjust to your own site architecture.",
+  "page_types": {
+    "/blog/": "blog",
+    "/docs/": "docs",
+    "/glossary/": "glossary",
+    "/(solutions|product)/": "landing"
+  },
+
+  "gsc": {
+    "_property": "Leave null to use site_url. Domain properties look like 'sc-domain:acme.example'.",
+    "property": null,
+    "days": 90,
+    "queries_per_url": 250,
+    "min_impressions": 10
+  },
+
+  "ahrefs": {
+    "limit": 1000,
+    "country": "us",
+    "competitors": ["competitor-one.example", "competitor-two.example"]
+  },
+
+  "classifier": {
+    "model": "gpt-4o-mini",
+    "base_url": "https://api.openai.com/v1/chat/completions",
+    "_batch_size": "50 at a time, with the running bucket list passed forward. Dump 900 into one context and the classifications drift by the end.",
+    "batch_size": 50
+  },
+
+  "_intent_buckets": "THE WHOLE BALLGAME. Spend time reading raw queries before you define these — our JUNK category was invented after seeing all the junk queries, not before. The example below is the one from the post.",
+  "intent_buckets": {
+    "JUNK": "hack/spy/surveillance intent, prank tools (\"bomber\"), pirated/modified apps, anything with zero legitimate buyer intent",
+    "CONSUMER": "legitimate but non-commercial (\"is [app] down\", \"[app] usage by country\")",
+    "BUSINESS": "API/developer, business accounts, pricing, features, OTP/verification, marketing use cases, branded queries"
+  },
+  "intent_tiebreak": "When unsure between CONSUMER and BUSINESS, look at whether the query implies operating an account at scale.",
+  "business_bucket": "BUSINESS",
+  "junk_bucket": "JUNK",
+
+  "embeddings": {
+    "model": "BAAI/bge-small-en-v1.5",
+    "chunk_words": 250,
+    "overlap_words": 40,
+    "_similarity_threshold": "0.70 is OUR calibration, not a constant. It does not transfer between corpora. Recalibrate every time; it takes ten minutes.",
+    "similarity_threshold": 0.7,
+    "thin_page_words": 200,
+    "cluster_divisor": 6,
+    "_boilerplate_patterns": "Kill the nav, footer, CTA blocks, and related-posts modules BEFORE anything else. Skip this and every page on your site scores as similar to every other page. These are regexes run over the raw markdown.",
+    "boilerplate_patterns": [
+      "<nav[\\s\\S]*?</nav>",
+      "<footer[\\s\\S]*?</footer>",
+      "## Related (articles|posts|reading)[\\s\\S]*?(?=\\n## |$)",
+      "## (Ready to get started|Get started today)[\\s\\S]*?(?=\\n## |$)",
+      "\\{\\{\\s*cta[\\s\\S]*?\\}\\}"
+    ]
+  },
+
+  "decision_rules": {
+    "junk_pct_kill": 0.6,
+    "business_pct_keep": 0.5,
+    "merge_cosine": 0.8
+  },
+
+  "_campaign_urls": "Anything in an active campaign. These always come back CHECK-FIRST, never KILL.",
+  "campaign_urls": []
+}

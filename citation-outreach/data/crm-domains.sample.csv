@@ -1,0 +1,6 @@
+domain,first_seen,source,status,outlet_type,notes
+example-buyer-guide.test,2026-01-14,gap,added,Buyer Guide,"LIST_CONFIRMED — 6 competitors on page, byline present"
+example-review-site.test,2026-01-14,gap,ready_to_contact,Review Site,"stale vendor still listed — strong hook"
+example-adjacent-vendor.test,2026-01-21,ahrefs,excluded,Adjacent vendor,"homepage check: direct competitor in disguise"
+example-news-outlet.test,2026-01-21,gap,excluded,News / Journalist,"NOT_A_LIST — feature article, no vendor list"
+example-fresh-roundup.test,2026-02-03,firehose,ready_to_contact,Buyer Guide,"published yesterday, 5 competitors, floor score at 1"

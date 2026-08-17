@@ -1,0 +1,14 @@
+# Search Console (steps 2a, 2b)
+google-api-python-client>=2.100
+google-auth>=2.23
+
+# Embeddings (step 5) — runs locally, no API. First run downloads ~130MB.
+sentence-transformers>=2.7
+scikit-learn>=1.3
+numpy>=1.24
+
+# Generators
+openpyxl>=3.1
+python-pptx>=0.6.23
+
+# Ahrefs (step 3) and the intent classifier (step 4) use urllib from the stdlib.

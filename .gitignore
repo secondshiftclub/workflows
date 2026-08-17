@@ -1,0 +1,44 @@
+# secrets — never commit
+.env
+.env.*
+!.env.example
+*credentials*.json
+*service-account*.json
+token.json
+
+# local config (copies of the .example files, filled in)
+config.json
+*/config.json
+!*/config.example.json
+
+# workflow output — these are your data, not the repo's
+out/
+output/
+cache/
+*.sqlite
+*.db
+master.csv
+*.xlsx
+*.pptx
+
+# your own CRM cache and pulls, but keep the shipped samples.
+# (git never descends into an excluded DIRECTORY, so exclude the contents,
+# not the folder, or the negation below can never fire.)
+data/*
+!data/*.sample.csv
+*/data/*
+!*/data/*.sample.csv
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python-version
+
+# node
+node_modules/
+package-lock.json
+
+# os
+.DS_Store

@@ -1,0 +1,75 @@
+{
+  "_comment": "Copy to config.json and fill in for your own category. The values below are a worked example from the recruiting/HR-software category, which is the one the post walks through. Every script reads this file — nothing is hardcoded.",
+
+  "company": "Acme",
+  "domain": "acme.example",
+  "category": "candidate screening software",
+  "brand_terms": ["acme", "acme.example"],
+
+  "_competitors": "domain -> display name. The domain is what gets BLOCKED as a target (their own roundup will never add you). The name is what gets COUNTED on a third-party page.",
+  "competitors": {
+    "hirevue.com": "HireVue",
+    "sparkhire.com": "Spark Hire",
+    "willo.video": "Willo",
+    "hireflix.com": "Hireflix",
+    "jobma.com": "Jobma",
+    "vidcruiter.com": "VidCruiter",
+    "testgorilla.com": "TestGorilla"
+  },
+
+  "_competitor_aliases": "Extra spellings to match on a page but report under the canonical name.",
+  "competitor_aliases": {
+    "SparkHire": "Spark Hire",
+    "myInterview": "myInterview",
+    "Vervoe": "Vervoe",
+    "Hireology": "Hireology"
+  },
+
+  "_vendor_hints": "Adjacent vendors that are NOT your competitors. Used only to judge whether a page is a real vendor list rather than an advice article.",
+  "vendor_hints": [
+    "Workable", "Greenhouse", "Lever", "BambooHR", "Breezy", "JazzHR", "Recruitee",
+    "iCIMS", "SmartRecruiters", "Paradox", "Ashby", "Criteria", "Wonderlic", "Harver"
+  ],
+
+  "_stale_vendors": "Vendors in your category that shut down, got acquired, or renamed. Finding one on a live page means the article hasn't been touched in two years and the editor knows it. This is the strongest hook in the system — keep the list current.",
+  "stale_vendors": ["Sonru", "Montage", "Wepow", "LaunchPad Recruits", "RIVS", "Jobvite Video"],
+
+  "_blocked_domains": "Noise: content farms, scraper networks, and the unrelated industry that shares an acronym with yours.",
+  "blocked_domains": [
+    "example-content-farm.test",
+    "example-scraper-network.test",
+    "example-auto-generated-profiles.test",
+    "example-shares-our-acronym.test"
+  ],
+
+  "_listicle_signals": "Cheap keyword pre-filter, run BEFORE the LLM. Printed verbatim in the post.",
+  "listicle_signals": [
+    "best ", "top ", " vs ", "vs.", "alternative", "alternatives", "comparison",
+    "compare", "roundup", "tools for", "software for", "platforms for",
+    "options for", "solutions for", "list of", "reviewed", "buyer", "guide to"
+  ],
+
+  "_category_terms": "The other half of the pre-filter. A candidate must match BOTH lists, not either.",
+  "category_terms": [
+    "recruit", "hiring", "candidate", "applicant", "screening", "interview",
+    "ats ", "applicant tracking", "talent acquisition", "hr software", "hr tech",
+    "assessment", "pre-employment", "one-way interview", "video interview",
+    "resume scre", "cv scre", "shortlist"
+  ],
+
+  "_product_gaps": "Things you do NOT ship. Named explicitly in every prompt. If your agent doesn't know what you don't do, it will invent it — persuasively.",
+  "product_gaps": [
+    "fraud or deepfake detection",
+    "live (real-time) interviews"
+  ],
+
+  "ahrefs": {
+    "limit": 500,
+    "min_dr": 15
+  },
+
+  "classifier": {
+    "model": "gpt-4o-mini",
+    "base_url": "https://api.openai.com/v1/chat/completions"
+  }
+}
