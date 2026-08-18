@@ -29,6 +29,18 @@ data/*
 */data/*
 !*/data/*.sample.csv
 
+# Raw corpora and their extracts. These are real people's words, usernames, and
+# permalinks — the Reddit README is explicit that none of it gets published, and
+# the documented quickstart writes posts.jsonl right into the workflow folder.
+*.jsonl
+language-bank.csv
+competitors.csv
+linkgap.csv
+fresh.json
+verified.json
+candidates.json
+urls.txt
+
 # python
 __pycache__/
 *.py[cod]
