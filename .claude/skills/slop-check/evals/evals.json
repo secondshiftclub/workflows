@@ -1,0 +1,43 @@
+{
+  "skill_name": "slop-check",
+  "evals": [
+    {
+      "id": 1,
+      "name": "draft-check-and-deslop",
+      "prompt": "slop check this draft before I post it: evals/fixtures/draft.md — and then de-slop it",
+      "expected_output": "A slop report (stamp, score/100 computed via the scoring module, four signals with quoted evidence, real-thing/slop split, de-slop list) followed by a .deslopped.md rewrite containing bracketed evidence asks and NO fabricated numbers or customers.",
+      "files": ["evals/fixtures/draft.md"],
+      "expectations": [
+        "Report contains a stamp verdict (SLOP/MOSTLY SLOP/MOSTLY REAL/NOT SLOP) and a score out of 100",
+        "All four signals (only_you, worth_clicking, quotable, helps_business) scored with quoted evidence",
+        "Final score matches a recomputation from the four signal scores and yours-count, rather than being asserted by the model",
+        "A .deslopped.md exists next to the original with bracketed evidence asks like [YOUR NUMBER...]",
+        "De-slopped draft contains no fabricated evidence: no specific numbers, customer names or study results absent from the original"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "url-check-parity",
+      "prompt": "is <A-URL-YOU-HAVE-ALREADY-SCORED> slop?",
+      "expected_output": "Uses the production extractor to fetch, judges it, computes the score via the same scoring module the deployed tool uses, delivers the report. Lands in the same verdict band as the hosted tool for that page.",
+      "files": [],
+      "expectations": [
+        "Fetched via the production extractor, not ad-hoc curl parsing",
+        "Report contains stamp, score out of 100, and all four signals",
+        "Score matches the hosted tool's score for the same page, or lands in the same verdict band"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "refuses-unreadable-page",
+      "prompt": "is <A-JS-RENDERED-OR-PAYWALLED-URL> slop?",
+      "expected_output": "Says it could not read the page and declines to score it.",
+      "files": [],
+      "expectations": [
+        "No score, stamp, or signal breakdown is produced",
+        "States explicitly that extraction failed and why",
+        "Does not fall back to judging the URL, title, or its own prior knowledge of the site"
+      ]
+    }
+  ]
+}

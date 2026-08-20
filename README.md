@@ -12,6 +12,18 @@ Nothing here needs our accounts — point the config at your own domain and cate
 | [`citation-outreach/`](citation-outreach/) | [How to automate getting mentioned in third-party listicles](https://www.hiresecondshift.com/p/how-to-automate-getting-mentioned) | Find the roundups AI engines cite that list your competitors and not you, verify them on the live page, and draft the pitch. |
 | [`topic-cluster-audit/`](topic-cluster-audit/) | [How to identify and audit topic clusters on your website](https://www.hiresecondshift.com/p/how-to-identify-and-audit-topic-clusters) | Nine scripts that turn your site, Search Console, and Ahrefs into a keep / rewrite / merge / kill call on every page in a cluster. |
 
+## Claude Code skills
+
+Separate from the workflows above: [`.claude/skills/`](.claude/) holds drop-in skills
+you can copy into your own project.
+
+| Skill | What it does |
+|---|---|
+| [`slop-check/`](.claude/skills/slop-check/) | The judge behind [check.hiresecondshift.com](https://check.hiresecondshift.com), running locally — score a draft, page, or URL on *could an LLM have written this?*, then de-slop what fails. Works on unpublished drafts, which the hosted tool can't do. |
+
+It needs one scoring module that isn't in this repo yet; [`.claude/README.md`](.claude/README.md)
+explains the three ways round that.
+
 ## Start here
 
 Every workflow follows the same shape, so you can pick one and ignore the rest:
@@ -23,6 +35,8 @@ Every workflow follows the same shape, so you can pick one and ignore the rest:
   config.example.*   your domain, your competitors, your category
   scripts/           the runnable parts
   prompts/           the LLM instructions, verbatim
+
+.claude/skills/      drop-in Claude Code skills, independent of the workflows
 ```
 
 Nothing shares state between workflows. There is no install step at the top level.
