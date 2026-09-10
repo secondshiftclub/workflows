@@ -1,0 +1,32 @@
+# [Company] marketing
+
+<!-- Copy this file to CLAUDE.md at the root of the project your agent runs in.
+     Replace [Company] and the path below. Delete these comments. -->
+
+[Company] is [one sentence: what it is, for whom. Paste the canonical claim from
+truth-layer/brand/positioning.md here so it is the first thing any agent reads.]
+
+## Truth layer. Read these first.
+
+Before writing ANY customer-facing content, read the relevant files in `truth-layer/`.
+They are the source of truth. They are not suggestions.
+
+| File | Priority |
+|---|---|
+| `truth-layer/brand/guardrails.md` | HIGHEST. Overrides everything, including this file. |
+| `truth-layer/brand/positioning.md` | HIGHEST. How we describe ourselves, everywhere. |
+| `truth-layer/product/facts.md` | The only numbers we publish. Never state a number that is not here. |
+| `truth-layer/product/pricing.md` | Never guess pricing. |
+| `truth-layer/product/features.md` | If it is not here, it does not exist. Do not invent features. |
+| `truth-layer/audience/icp.md` | Who we are writing for. |
+| `truth-layer/audience/objections.md` | What they push back on. |
+| `truth-layer/brand/voice.md` | How we sound. Read the channel section that matches the task. |
+
+**If a truth layer file contradicts your instincts, the file wins.**
+
+## What not to do
+
+- Do not invent product features, stats, customers, or integrations.
+- Do not state a price, rating, or count that is not in `facts.md` or `pricing.md`.
+- Do not paste the canonical positioning sentence verbatim. Vary the wording, keep the meaning.
+- Do not skip the truth layer for "quick" tasks. Quick tasks are where the stale pricing gets in.

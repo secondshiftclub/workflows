@@ -11,6 +11,7 @@ Nothing here needs our accounts — point the config at your own domain and cate
 | [`reddit-customer-language/`](reddit-customer-language/) | [How to mine Reddit for customer language](https://www.hiresecondshift.com/p/how-to-mine-reddit-for-customer-language) | Pull a subreddit's full history from an archive, extract verbatim buyer language, and turn it into four reference files every copy task reads from. |
 | [`citation-outreach/`](citation-outreach/) | [How to automate getting mentioned in third-party listicles](https://www.hiresecondshift.com/p/how-to-automate-getting-mentioned) | Find the roundups AI engines cite that list your competitors and not you, verify them on the live page, and draft the pitch. |
 | [`topic-cluster-audit/`](topic-cluster-audit/) | [How to identify and audit topic clusters on your website](https://www.hiresecondshift.com/p/how-to-identify-and-audit-topic-clusters) | Nine scripts that turn your site, Search Console, and Ahrefs into a keep / rewrite / merge / kill call on every page in a cluster. |
+| [`truth-layer/`](truth-layer/) | [A truth layer for your business](https://www.hiresecondshift.com/) | Eight empty markdown files that pin down what is true about your business, plus the wiring so every agent reads them before it writes. Build it in a day. |
 
 ## Claude Code skills
 
