@@ -11,6 +11,7 @@ Nothing here needs our accounts — point the config at your own domain and cate
 | [`reddit-customer-language/`](reddit-customer-language/) | [How to mine Reddit for customer language](https://www.hiresecondshift.com/p/how-to-mine-reddit-for-customer-language) | Pull a subreddit's full history from an archive, extract verbatim buyer language, and turn it into four reference files every copy task reads from. |
 | [`citation-outreach/`](citation-outreach/) | [How to automate getting mentioned in third-party listicles](https://www.hiresecondshift.com/p/how-to-automate-getting-mentioned) | Find the roundups AI engines cite that list your competitors and not you, verify them on the live page, and draft the pitch. |
 | [`topic-cluster-audit/`](topic-cluster-audit/) | [How to identify and audit topic clusters on your website](https://www.hiresecondshift.com/p/how-to-identify-and-audit-topic-clusters) | Nine scripts that turn your site, Search Console, and Ahrefs into a keep / rewrite / merge / kill call on every page in a cluster. |
+| [`blog-refresh/`](blog-refresh/) | [The five-step loop for refreshing a blog post](https://www.hiresecondshift.com/) | Audit, detect, draft, lint, verify — the page-level loop that runs after the cluster audit. Derives a voice profile from your own archive, then enforces the half of it a regex can catch. |
 | [`truth-layer/`](truth-layer/) | [A truth layer for your business](https://www.hiresecondshift.com/) | Eight empty markdown files that pin down what is true about your business, plus the wiring so every agent reads them before it writes. Build it in a day. |
 
 ## Claude Code skills
@@ -51,6 +52,7 @@ Roughly, per month, at the scale we run them:
 | Reddit customer language | **$0** — the archive API is free | $0 |
 | Citation outreach | **$95** (one AI-visibility tool) | ~$150–200 + firehose cap |
 | Topic cluster audit | **$0** if you already have Ahrefs | Ahrefs API units + a few dollars of LLM |
+| Blog refresh | **$0** — three stdlib Python scripts | a few dollars of LLM per page |
 
 Each README breaks its own numbers down, including the three places cost hides in the citation
 pipeline. Prices were accurate in August 2026 and are not our prices to guarantee — check before
