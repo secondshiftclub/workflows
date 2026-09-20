@@ -1,7 +1,7 @@
 # Prompt — draft against the voice profile
 
-**Inputs:** the gap audit, the stratum block, `voice-profile.json`, the link plan, and your
-source-of-truth files.
+**Inputs:** the gap audit, the stratum block, `voice-guide.md` (judgment) and `voice-profile.json`
+(numbers), the link plan, and your source-of-truth files.
 
 ---
 
@@ -19,6 +19,10 @@ to it instead.
 - *N* contractions per 1,000 words
 - exclamations within the per-post ceiling
 - the signature moves, used at their observed rate — not on every heading
+
+Read `voice-guide.md` for everything the numbers can't carry — the intro moves, the exemplar
+posts, what kind of humour is allowed, how jargon gets unpacked. The profile tells you the shape;
+the guide tells you whether it reads like you.
 
 A frequency is a default, not a cage. Breaking one deliberately is allowed; breaking all of them
 means you are writing in someone else's voice.

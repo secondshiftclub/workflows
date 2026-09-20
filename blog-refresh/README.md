@@ -32,9 +32,15 @@ Requires Python 3.9+. No install step, no dependencies.
 ```bash
 cp config.example.json config.json          # your site URL and house rules
 cp strata.example.md strata.md              # the eras in your archive
+cp voice-guide.example.md voice-guide.md    # the judgment half of your voice
 
 # Step 3's raw material: derive the voice profile from your own archive, once.
 python3 scripts/voice_profile.py --corpus ../corpus/blog --out voice-profile.json
+
+# Step 1's fourth source: the questions buyers actually ask, in their words.
+# Reuses the puller from the reddit-customer-language workflow — pull once, use twice.
+node ../reddit-customer-language/scripts/pull.mjs --sub YourSubreddit --months 6 > posts.jsonl
+node scripts/question_digest.mjs posts.jsonl --terms "your topic,synonym" --top 40
 
 # Per page — plan the links and check you're not about to compete with yourself.
 python3 scripts/internal_links.py --corpus ../corpus/blog --query "your target query" \
@@ -84,6 +90,22 @@ without being told. Name it and it becomes reproducible.
 
 ---
 
+## Two layers, and only one of them is automatable
+
+`voice-profile.json` is the mechanical half — the numbers `style_lint.py` can enforce. It is not
+your voice guide.
+
+`voice-guide.md` is the other half, and it is the one that decides whether a draft reads like you:
+the intro moves, the signature fragments, what kind of joke is allowed, how jargon gets unpacked,
+and three exemplar posts with a line on why each works. **Every section of it should end in real
+examples pulled from your archive.** A guide that describes your voice in adjectives is a vibe,
+and nobody — human or model — can write or review against a vibe.
+
+The split is the point: a linter can tell you there are eleven exclamation marks. It cannot tell
+you the joke didn't land.
+
+---
+
 ## Errors block, warnings argue
 
 The linter's design decision isn't which rules it has. It's that it has two severities that mean
@@ -129,8 +151,10 @@ frequencies, zero the errors, source every claim* can be handed to the night shi
 blog-refresh/
   config.example.json      site URL, house rules, word bands, banned patterns
   strata.example.md        the eras in your archive and their fingerprints
+  voice-guide.example.md   the judgment layer — the half a regex can't check
   scripts/
     voice_profile.py       derive frequencies from your own posts → voice-profile.json
+    question_digest.mjs    real buyer questions from a subreddit pull → the fan-out's 4th source
     internal_links.py      link candidates + the cannibalisation check
     style_lint.py          errors block, warnings argue
   prompts/
