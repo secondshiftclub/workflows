@@ -26,6 +26,9 @@ A page that answers only the head term loses the citation. Enumerate facets from
 2. **Keyword exports**, if available, to attach a volume signal.
 3. **People Also Ask**, harvested from judgment-phrased searches, not the head term.
 4. **Forum questions** — the subreddits where buyers argue. Real phrasings, not tool phrasings.
+   Run `scripts/question_digest.mjs` over a subreddit pull; it groups the questions by the same
+   facets used above, so the output drops straight into the coverage matrix. Facets with the most
+   distinct questions are the ones the page is most likely under-answering.
 5. **Competitor FAQ headings** — their published fan-out bets.
 
 Dedupe into one table.
