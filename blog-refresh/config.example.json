@@ -1,0 +1,46 @@
+{
+  "_comment": "Copy to config.json. The scripts read this and voice-profile.json. Almost everything here should come from your own archive rather than from these defaults — run scripts/voice_profile.py first.",
+
+  "site_url": "https://acme.example",
+  "_site_url": "Drives internal-vs-external link classification in the linter. Get it wrong and every one of your own links counts as external.",
+
+  "corpus_dir": "../corpus/blog",
+  "_corpus_dir": "A markdown crawl of your blog. Screaming Frog exports fine. Same corpus the topic-cluster-audit workflow uses.",
+
+  "lint": {
+    "_spelling": "us | uk. voice_profile.py tells you which one your archive actually uses — that answer is sometimes a surprise.",
+    "spelling": "us",
+
+    "_dash": "spaced_en | em | any. Pick the one your archive already uses; the profiler reports the split.",
+    "dash": "spaced_en",
+
+    "banned_anchors": ["here", "click here", "this link", "read more", "link"],
+
+    "_banned_patterns": "Your own deprecated terms and legacy tics. This list is where a postmortem becomes a rule — add one every time something embarrassing nearly ships.",
+    "banned_patterns": [
+      { "pattern": "\\be-mail\\b", "message": "\"e-mail\" — house spelling is \"email\"." },
+      { "pattern": "\\bgame.changer\\b", "message": "\"game-changer\" — retired, drifting to cliché." }
+    ],
+
+    "banned_headings": ["conclusion", "summary", "final thoughts"],
+    "allow_emoji": false,
+    "oxford_comma": true,
+
+    "_word_bands": "Per content type, derived from your own archive rather than guessed. voice_profile.py prints p10/median/p90.",
+    "word_bands": {
+      "default": [1400, 2600],
+      "explainer": [1400, 2600],
+      "how-to": [1400, 2300],
+      "comparison": [1700, 2600],
+      "listicle": [1500, 2900],
+      "pillar": [2800, 4500],
+      "announcement": [380, 1200]
+    },
+
+    "_links": "Norms, not laws. A product-led page with zero external links can be correct — that is exactly the kind of warning that survives with a written reason.",
+    "links": { "internal_min": 10, "internal_max": 35, "external_min": 2 },
+
+    "keyword_in_h2_min": 3,
+    "exclamation_max": 5
+  }
+}
